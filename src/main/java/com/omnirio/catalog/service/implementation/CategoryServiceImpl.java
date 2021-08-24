@@ -16,10 +16,13 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryRepository categoryRepository;
 
 	public Category insertCategory(String categoryName) {
+		if(categoryName!=null && !categoryName.isEmpty()){
 		Category category=new Category();
 		category.setCategoryName(categoryName);
 		category = categoryRepository.save(category);
 		return category;
+		}
+		return null;
 	}
 
 	public Category getCategory(Long categoryId) {

@@ -48,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
 			product = productRepository.save(product);
 			if (productRequest.getProdutAttributes() != null) {
 				for (ProdutAttributeRequest produtAttributeRequest : productRequest.getProdutAttributes()) {
+					if(produtAttributeRequest.getAttributeValue()!=null && !produtAttributeRequest.getAttributeValue().isEmpty()){
 					ProductAttribute productAttribute = new ProductAttribute();
 					Optional<CategoryAttribute> categoryAttribute = categoryAttributeRepository
 							.findById(produtAttributeRequest.getCategoryAttributeId());
@@ -56,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
 						productAttribute.setAttributeValue(produtAttributeRequest.getAttributeValue());
 						productAttribute.setProduct(product);
 						attributeProductRepository.save(productAttribute);
+					}
 					}
 				}
 			}

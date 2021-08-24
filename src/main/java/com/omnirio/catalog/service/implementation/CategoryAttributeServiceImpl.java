@@ -3,10 +3,8 @@ package com.omnirio.catalog.service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.omnirio.catalog.model.Category;
 import com.omnirio.catalog.model.CategoryAttribute;
 import com.omnirio.catalog.repo.CategoryAttributeRepository;
@@ -27,7 +25,7 @@ public class CategoryAttributeServiceImpl implements CategoryAttributeService {
 	public CategoryAttribute insertAttribute(String attributeName,Long categoryId){
 		CategoryAttribute categoryAttribute=new CategoryAttribute();
 		Optional<Category> category=categoryRepository.findById(categoryId);
-		if(category.isPresent()){
+		if(category.isPresent() && attributeName!=null && !attributeName.isEmpty()){
 		categoryAttribute.setCategory(category.get());
 		categoryAttribute.setAttributeName(attributeName);
 		categoryAttribute=categoryAttributeRepository.save(categoryAttribute);

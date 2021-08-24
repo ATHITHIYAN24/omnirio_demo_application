@@ -13,7 +13,7 @@ import com.omnirio.catalog.wapper.CategoryAttributeResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-// This controller having two api for insert and get attributes
+// This controller having two api for insert and get category attribute by categoryId
 @RestController
 @Api(value="Attribute" , description="Operation Attribute")
 public class CategoryAtrributeController {
@@ -28,6 +28,7 @@ public class CategoryAtrributeController {
 	}
 	
 	@RequestMapping(value="category/attribute",method=RequestMethod.GET)
+	@ApiOperation(value="Get Category Attribute", response=CategoryAttributeResponse.class)
 	public CategoryAttributeResponse getCategoryAttribute(@RequestParam(value="categoryId",required=true) Long categoryId){
 		return categoryAttributeService.getCategoryAttributeByCategoryId(categoryId);
 	}
